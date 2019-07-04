@@ -26,7 +26,6 @@ class Solution {
 			if(2*i>r1-1||2*i>r2-1) {
 				if(r1==0) {
 					resultList.add(matrix[0][r2-1]);
-					break;
 				}
 				if (r2==0) {
 					resultList.add(matrix[r1-1][0]);
