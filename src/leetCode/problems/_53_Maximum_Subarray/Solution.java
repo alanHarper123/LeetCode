@@ -1,4 +1,4 @@
-package leetCode.problems_53_Maximum_Subarray;
+package leetCode.problems._53_Maximum_Subarray;
 
 class Solution {
     public int maxSubArray(int[] nums) {
