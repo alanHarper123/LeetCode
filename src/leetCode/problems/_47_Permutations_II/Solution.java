@@ -5,9 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 
 
-class Solution {
+public class Solution {
 	ArrayList<List<Integer>> resultLists = new ArrayList<>();
 	public List<List<Integer>> permuteUnique(int[] nums) {
+		resultLists.clear();
 		Arrays.sort(nums);
 		backtrack(nums, new ArrayList<>(nums.length),new boolean[nums.length], new  ArrayList<>(nums.length),-1,-1);
 		return resultLists;
