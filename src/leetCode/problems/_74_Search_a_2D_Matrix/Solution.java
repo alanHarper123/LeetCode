@@ -13,13 +13,15 @@ public class Solution {
         int index;
         while (begin<end) {
 			index = (begin+end)/2;
-			if (matrix[index/n][index%n]>target) 
+			int row = index/n;
+			int col = index%n;
+			if (matrix[row][col]>target) 
 				end = index;
-			else if(matrix[index/n][index%n]<target)
+			else if(matrix[row][col]<target)
 				begin = index+1;
 			else 
-				return true;			
-		}
+				return true;
+		}      
         return false;
     }
 }
