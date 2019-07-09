@@ -5,6 +5,7 @@ public class Solution {
 		int r = n/2;
 		int sum = 1;
 		int sumi=1;
+		//sumi = (n-k)!/(n-2*k)!/k!
 		for (int k = 1; k < r+1; k++) {
 			long l2 = (n-k+1)*k;
 			long l1;
@@ -15,7 +16,7 @@ public class Solution {
 		}
 		return sum;
 	}
-	//calculate (n-k)!/(n-2*k)!/k!
+
 
 	public static void main(String[] args) {
 		int[]test = {
