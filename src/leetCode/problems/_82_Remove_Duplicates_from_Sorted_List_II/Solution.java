@@ -1,23 +1,22 @@
-package leetCode.problems._83_Remove_Duplicates_from_Sorted_List;
+package leetCode.problems._82_Remove_Duplicates_from_Sorted_List_II;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-// Definition for singly-linked list.
 class ListNode {
-     int val;
-     ListNode next;
-     ListNode(int x) { val = x; }
- }
+    int val;
+    ListNode next;
+    ListNode(int x) { val = x; }
+}
 
 class Solution {
-    public ListNode deleteDuplicates(ListNode head) {
-    	ListNode interator = head;
-    	if(interator==null)
-    		return null;
-    	ListNode temp = null;
-    	ListNode lastUni = interator;
-    	while (interator!=null) {
+   public ListNode deleteDuplicates(ListNode head) {
+   	ListNode interator = head;
+   	if(interator==null)
+   		return null;
+   	ListNode temp = null;
+   	ListNode lastUni = interator;
+   	while (interator!=null) {
 			interator = interator.next;
 			if(interator!=null && interator.val==lastUni.val) {
 				while (interator!=null && interator.val==lastUni.val) {
@@ -25,18 +24,18 @@ class Solution {
 				}
 				if(temp == null) {
 					head = interator;
-				}else {
-					temp.next = interator;
-					temp = interator;
 				}
 			}else {
-				temp = interator;
+				if(temp!=null)
+					temp.next = lastUni;
+				temp = lastUni;
 			}
 			lastUni = interator;
-			
 		}
-    	return head;
-    }
+   	if(temp!=null)
+   		temp.next=null;
+   	return head;
+   }
 	public static void main(String[] args) {
 		int[][] testdata = {
 				{1,2,2},
@@ -65,4 +64,3 @@ class Solution {
 		}
 	}
 }
-
