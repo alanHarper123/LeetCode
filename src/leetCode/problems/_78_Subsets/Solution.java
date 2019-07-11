@@ -22,7 +22,7 @@ public class Solution {
 	}
 	public static void main(String[] args) {
 		int[][]test = {
-				{1,2,3},
+				{1,2,3,4},
 		};
 		Solution solution = new Solution();
 		for (int i = 0; i < test.length; i++) {
