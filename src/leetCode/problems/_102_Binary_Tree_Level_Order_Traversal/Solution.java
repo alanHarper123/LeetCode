@@ -1,6 +1,5 @@
 package leetCode.problems._102_Binary_Tree_Level_Order_Traversal;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
