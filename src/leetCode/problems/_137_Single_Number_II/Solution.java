@@ -18,7 +18,7 @@ public class Solution {
 			b = (b&~a&~input)|(~b&~a&input);
 			a = temp;
 		}
-    	return a|b;
+    	return b;
     }
     public static void main(String[] args) {
 		int[][] tests = {
