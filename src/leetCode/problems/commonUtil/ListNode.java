@@ -10,13 +10,12 @@ public class ListNode {
 		ListNode runner = null;
 		for (int i = 0; i < list.length; i++) {
 			ListNode e = new ListNode(list[i]);
-			if(root!=null) {
+			if(root==null) {
 				root = e;
-				runner = e;
 			}else {
 				runner.next = e;
-				runner = e;
 			}
+			runner = e;
 		}
 		return root;
 	}
@@ -25,9 +24,12 @@ public class ListNode {
 		String s = "[";
 		ListNode runner = this;
 		while (runner!=null) {
-			if(s!="[") {
+			if(!s.endsWith("[")) {
 				s+=","+runner.val;
+			}else {
+				s+=runner.val;
 			}
+			runner=runner.next;
 		}
 		s+="]";
 		return s;
