@@ -19,5 +19,6 @@ public class Solution {
         	head = head.next;	
 		}
         return newHead;
+        
     }
 }
