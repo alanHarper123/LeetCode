@@ -1,5 +1,8 @@
 package leetCode.problems._205_Isomorphic_Strings;
 
+import java.util.HashMap;
+import java.util.HashSet;
+
 public class Solution {
     public boolean isIsomorphic(String s, String t) {
         HashMap<Character, Character> base = new HashMap<>();
