@@ -7,7 +7,7 @@ import java.util.LinkedList;
 
 class Node{
 	int val;
-	int level;
+	int unloadC;
 	HashSet<Node> pres;
 	HashSet<Node> upper;
 	public Node(int val) {
@@ -45,20 +45,8 @@ public class Solution {
 			if(base[i]==null) {
 				result[index--]=i;
 			}else {
-				if(base[i].upper==null) {
-					result[index--]=base[i].val;
-					if(base[i].pres!=null) {
-						for (Iterator<Node> iterator = 
-								base[i].pres.iterator(); iterator.hasNext();) {
-							Node node = iterator.next();
-							node.upper.remove(base[i]);
-							if(node.upper.isEmpty()) {
-								stack.add(node);
-							}
-						}
-					}
-				}
-
+				if(base[i].upper==null) 
+					stack.add(base[i]);
 			}
 		}
 		while (!stack.isEmpty()) {
@@ -69,8 +57,8 @@ public class Solution {
 					for (Iterator<Node> iterator = 
 							newNode.pres.iterator(); iterator.hasNext();) {
 						Node node = iterator.next();
-						node.upper.remove(newNode);
-						if(node.upper.isEmpty()) {
+						node.unloadC++;
+						if(node.upper.size()==node.unloadC) {
 							stack.add(node);
 						}
 					}
