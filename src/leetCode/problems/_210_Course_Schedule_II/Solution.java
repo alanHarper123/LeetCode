@@ -8,8 +8,8 @@ import java.util.LinkedList;
 class Node{
 	int val;
 	int unloadC;
-	HashSet<Node> pres;
-	HashSet<Node> upper;
+	LinkedList<Node> pres;
+	LinkedList<Node> upper;
 	public Node(int val) {
 		this.val = val;
 	}
@@ -31,10 +31,10 @@ public class Solution {
 			if(base[c]==null) 
 				base[c] = new Node(c);
 			if(base[c].pres==null) 
-				base[c].pres = new HashSet<>();
+				base[c].pres = new LinkedList<>();
 
 			if(base[pre].upper==null) 
-				base[pre].upper = new HashSet<>();
+				base[pre].upper = new LinkedList<>();
 
 			base[c].pres.add(base[pre]);
 			base[pre].upper.add(base[c]);
@@ -70,7 +70,7 @@ public class Solution {
 	private boolean checkLoop(Node code,Node pre) {
 		if(code.val == pre.val)
 			return true;
-		HashSet<Node> coursePre = pre.pres;
+		LinkedList<Node> coursePre = pre.pres;
 		if(coursePre!=null) {
 			for (Iterator<Node> iterator = 
 					coursePre.iterator(); iterator.hasNext();) {
