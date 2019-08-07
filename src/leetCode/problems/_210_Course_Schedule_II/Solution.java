@@ -7,9 +7,8 @@ import java.util.LinkedList;
 
 class Node{
 	int val;
-	int unloadC;
 	LinkedList<Node> pres;
-	LinkedList<Node> upper;
+	int loadC;
 	public Node(int val) {
 		this.val = val;
 	}
@@ -23,21 +22,18 @@ public class Solution {
 			int pre = prerequisites[i][1];
 			if(base[pre]==null)
 				base[pre] = new Node(pre);
-			else {
-				if (base[c]!=null&&checkLoop(base[c], base[pre])) {
-						return new int[0];
-				}
-			}
+//			else {
+//				if (base[c]!=null&&checkLoop(base[c], base[pre])) {
+//						return new int[0];
+//				}
+//			}
 			if(base[c]==null) 
 				base[c] = new Node(c);
 			if(base[c].pres==null) 
 				base[c].pres = new LinkedList<>();
 
-			if(base[pre].upper==null) 
-				base[pre].upper = new LinkedList<>();
-
 			base[c].pres.add(base[pre]);
-			base[pre].upper.add(base[c]);
+			base[pre].loadC++;
 		}
 		int index = numCourses-1;
 		LinkedList<Node> stack = new LinkedList<>();
@@ -45,7 +41,7 @@ public class Solution {
 			if(base[i]==null) {
 				result[index--]=i;
 			}else {
-				if(base[i].upper==null) 
+				if(base[i].loadC==0) 
 					stack.add(base[i]);
 			}
 		}
@@ -53,36 +49,38 @@ public class Solution {
 			Node newNode = stack.pop();
 
 				result[index--]=newNode.val;
+				
 				if(newNode.pres!=null) {
 					for (Iterator<Node> iterator = 
 							newNode.pres.iterator(); iterator.hasNext();) {
 						Node node = iterator.next();
-						node.unloadC++;
-						if(node.upper.size()==node.unloadC) {
+						node.loadC--;
+						if(node.loadC==0) {
 							stack.add(node);
 						}
 					}
 				}
 			}
-		
+		if(index!=-1)
+			return new int[0];
 		return result;
 	}
-	private boolean checkLoop(Node code,Node pre) {
-		if(code.val == pre.val)
-			return true;
-		LinkedList<Node> coursePre = pre.pres;
-		if(coursePre!=null) {
-			for (Iterator<Node> iterator = 
-					coursePre.iterator(); iterator.hasNext();) {
-				Node newNode = iterator.next();
-				if(code.val == newNode.val)
-					return true;
-				if(checkLoop(code, newNode))
-					return true;
-			}
-		}
-		return false;
-	}
+//	private boolean checkLoop(Node code,Node pre) {
+//		if(code.val == pre.val)
+//			return true;
+//		LinkedList<Node> coursePre = pre.pres;
+//		if(coursePre!=null) {
+//			for (Iterator<Node> iterator = 
+//					coursePre.iterator(); iterator.hasNext();) {
+//				Node newNode = iterator.next();
+//				if(code.val == newNode.val)
+//					return true;
+//				if(checkLoop(code, newNode))
+//					return true;
+//			}
+//		}
+//		return false;
+//	}
 	public static void main(String[] args) {
 		int[][][] testData1 = {
 				{{1,0},{2,0},{3,1},{3,2}},
