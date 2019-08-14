@@ -11,9 +11,11 @@ public class Solution {
     			nums[random.nextInt(nums.length)], k, 0, nums.length-1);
     }
     private int findKthLargestUtil(int[] nums,int pivot,int k, int start, int end) {
-    	int [] base= new int[3];
+    	int count=0;
+//    	int randP=0;
+//    	boolean is1Set = true;
     	int temp;
-    	boolean is1Set = false;
+    	
     	int si = start, ei = end;
     	while (si<=ei) {
     		if(nums[si]>pivot) {
@@ -21,28 +23,28 @@ public class Solution {
     			nums[si] = nums[ei];
     			nums[ei--] = temp;
     		}else if(nums[si]==pivot) {
-    			base[1]++;
+
+    			count++;
     			si++;
 			}else {
-				if(!is1Set) {
-					base[2] = nums[si];
-				}else {
-					is1Set = !is1Set;
-				}
+//				if(is1Set) {
+//					randP = nums[si];
+//				}else {
+//					is1Set = !is1Set;
+//				}
 				
 				si++;
 			}
 		}
-    	base[0] = si-1;
-    	if(k>base[0]) {
+    	si--;
+    	if(k>si) {
     		return findKthLargestUtil(nums,
-    				nums[base[0]+1+random.nextInt(end-base[0])], k, base[0]+1, end);
-    	}else if(k<=base[0]-base[1]) {
-    		return findKthLargestUtil(nums,base[2], k,start,base[0]);
+    				nums[si+1+random.nextInt(end-si)], k, si+1, end);
+    	}else if(k<=si-count) {
+    		return findKthLargestUtil(nums,nums[start+random.nextInt(si-start+1)], k,start,si);
     	}else {
     		return pivot;
     	}
-    	
     }
     public static void main(String[] args) {
 		int[][] testData1 = {
