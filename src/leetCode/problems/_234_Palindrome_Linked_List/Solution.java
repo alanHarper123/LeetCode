@@ -15,13 +15,18 @@ class Solution {
         	reverseT = slowRunner;
         	slowRunner = temp;
 		}
+        ListNode repareTemp  = slowRunner;
         if(fastRunner!=null) {
         	slowRunner = slowRunner.next;
         }
+        
         while(slowRunner!=null&&reverseT!=null) {
         	if(reverseT.val!=slowRunner.val)
         		return false;
-        	reverseT = reverseT.next;
+        	temp = reverseT.next;
+        	reverseT.next = repareTemp;
+        	repareTemp = reverseT;
+        	reverseT = temp;
         	slowRunner = slowRunner.next;
         }
         return true;	
