@@ -8,24 +8,19 @@ class Solution {
         recursiveFind(root, p, q);
         return result;
     }
-    private boolean recursiveFind(TreeNode root, TreeNode p, TreeNode q) {
+    private void recursiveFind(TreeNode root, TreeNode p, TreeNode q) {
     	if(result!=null||root==null)
-    		return false;
-    	int count = 0;
-    	if(root.val == p.val||root.val == q.val) 
-    		count++;
+    		return;
     	
-    	if(recursiveFind(root.right, p, q))
-    		count++;
-    	if(count==2) {
-    		result = root;
-    		return true;
+    	if((root.val>p.val&&root.val>q.val)) {
+    		recursiveFind(root.left, p, q);
+    		return;
     	}
-    	if(recursiveFind(root.left, p, q))
-    		count++;	
-		if(count==2)
-			result = root;
-    	
-    	return count>0;	
+    		
+    	if((root.val<p.val&&root.val<q.val)) {
+    		recursiveFind(root.right, p, q);
+    		return;
+    	}
+		result = root;
     }
 }
