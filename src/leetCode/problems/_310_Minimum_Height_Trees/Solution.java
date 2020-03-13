@@ -6,12 +6,13 @@ import java.util.Queue;
 
 public class Solution {
 	private int[] connetionCs;
-	private Integer[] levels;
+
 	private LinkedList<Integer>[] neibors;
 	public List<Integer> findMinHeightTrees(int n, int[][] edges) {
 		connetionCs = new int[n];
+		int left = n;
 		neibors = (LinkedList<Integer>[]) new LinkedList[n];
-		levels = new Integer[n];
+
 		for (int i = 0; i < n; i++) {
 			neibors[i] = new LinkedList<>();
 		}
@@ -23,40 +24,36 @@ public class Solution {
 		}
 		Queue<Integer> looseEnds = new LinkedList<>();
 		for (int i = 0; i < n; i++) {
-			if(connetionCs[i]==1) {
+			if(connetionCs[i]<=1) {
 				looseEnds.add(i);
 			}
 
 		}
-		int level = 0;
 		LinkedList<Integer> results = new LinkedList<>();
 		while (!looseEnds.isEmpty()) {
-			level++;
+			if(left==1||left==2) {
+				results.addAll(looseEnds);
+				return results;
+			}
 			int count = looseEnds.size();
+			left-=count;
 			for (int i = 0; i < count; i++) {
 				int looseEnd = looseEnds.poll();
-				levels[looseEnd]=level;
 				for (int next : neibors[looseEnd]) {
-					if(levels[next]==null) {
-						if(connetionCs[next]==1)
-							results.add(next);
-						else if(connetionCs[next]==2) {
+					
+						if(connetionCs[next]==2) {
 							connetionCs[next]--;
 							looseEnds.add(next);
 						}else {
 							connetionCs[next]--;
 						}
-					}else {
-						if(levels[next].equals(levels[looseEnd]))
-							results.add(looseEnd);
-					}
+					
 				}
-				
+
 			}
+            
 			
 		}
-		if(n==0)
-			results.add(0);
 		return results;
 	}
 }
