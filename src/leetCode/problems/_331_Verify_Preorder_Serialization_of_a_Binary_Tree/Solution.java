@@ -4,9 +4,8 @@ public class Solution {
 	public boolean isValidSerialization(String preorder) {
 		int leftBoneC = 0;
 		boolean leftBoneN = false;
-		String[] preorderEls = preorder.split(",");
-		for (String s : preorderEls) {
-			if(s.equals("#")) {
+		for (int i=0; i<preorder.length();i++) {
+			if(preorder.charAt(i)=='#') {
 				if(leftBoneN) {
 					if(leftBoneC!=0)
 						leftBoneC--;
@@ -14,16 +13,20 @@ public class Solution {
 						return false;
 				}else {
 					leftBoneN = true;
-				}	
+				}
+				i++;
 			}else {
 				if(leftBoneN==true) {
 					if(leftBoneC==0)
 						return false;
 					leftBoneN = false;
-				}
-					
+				}	
 				else 
 					leftBoneC++;
+				while (i<preorder.length()&&preorder.charAt(i)!=','
+						) {
+					i++;
+				}
 			}
 
 		}
@@ -31,6 +34,6 @@ public class Solution {
 	}
 	public static void main(String[] args) {
 		Solution solution = new Solution();
-		System.out.println(solution.isValidSerialization("#,7,6,9,#,#,#"));
+		System.out.println(solution.isValidSerialization("9,#,92,#,#"));
 	}
 }
