@@ -1,9 +1,6 @@
 package leetCode.problems._398_Random_Pick_Index;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.Random;
 
 public class Solution {
