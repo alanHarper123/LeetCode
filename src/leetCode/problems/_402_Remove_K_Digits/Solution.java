@@ -28,14 +28,14 @@ public class Solution {
 		if(k==0) {
 			return num.substring(start);
 		}
-		
-		
+	
 		if(index_zero==-1)
 			index_zero = num.length();
 		LinkedList<Character> chrs = new LinkedList<>();
 		chrs.add(num.charAt(start));
 		int deletedC = 0;
-		for (int i = start+1; i<index_zero; i++) {
+		int i = start+1;
+		for (; deletedC<k&&i<index_zero; i++) {
 			Character ref = chrs.peekLast();
 			char c = num.charAt(i);
 			while(!chrs.isEmpty()&&ref>c&&deletedC<k) {
@@ -45,6 +45,7 @@ public class Solution {
 			}
 			chrs.add(c);
 		}
+		i++;
 		while (deletedC<k) {
 			deletedC++;
 			chrs.pollLast();
@@ -54,7 +55,7 @@ public class Solution {
 		while(!chrs.isEmpty()) {
 			stringBuilder.append(chrs.pollFirst());
 		}
-		stringBuilder.append(num.substring(index_zero));
+		stringBuilder.append(num.substring(i));
 		if(stringBuilder.length()==0)
 			stringBuilder.append(0);
 		return stringBuilder.toString();
