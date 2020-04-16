@@ -27,13 +27,6 @@ public class Solution {
     		}
     		return;
     	}
-    	if(digitCount==1) {
-    		pre++;
-    		if((pre&minuteMask)<60) {
-    			combinations.add(pre);
-    		}
-    		return;
-    	}
     	for (int i = digitCount; i > num-1; i--) {
     		if(i==9&&pre==(1<<9)) {
     			continue;
