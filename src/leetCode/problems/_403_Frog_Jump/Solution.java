@@ -14,7 +14,7 @@ public class Solution {
     	for (int i = 0; i < stones.length; i++) {
 			stoneValueToIndex.put(stones[i], i);
 		}
-    	return dfs(0, 0, stones, stoneValueToIndex, stonesVisited);
+    	return dfs(1, 0, stones, stoneValueToIndex, stonesVisited);
 
     }
 
@@ -23,7 +23,7 @@ public class Solution {
     		HashSet<Integer>[] stonesVisited) {
     	if(frontier==stones.length-1)
     		return true;
-    	if(jumpStep>=0) {
+    	if(jumpStep>0) {
     		int nextStoneV = jumpStep+stones[frontier];
     		if(stoneValueToIndex.containsKey(nextStoneV)) {
     			int nextIndex = stoneValueToIndex.get(nextStoneV);
