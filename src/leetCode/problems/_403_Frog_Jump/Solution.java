@@ -12,6 +12,8 @@ public class Solution {
     	HashMap<Integer, Integer> stoneValueToIndex = new HashMap<>(stones.length);
     	HashSet<Integer>[] stonesVisited = new HashSet[stones.length];
     	for (int i = 0; i < stones.length; i++) {
+    		if(i>=3&&stones[i]-stones[i-1]>i)
+    			return false;
 			stoneValueToIndex.put(stones[i], i);
 		}
     	return dfs(1, 0, stones, stoneValueToIndex, stonesVisited);
