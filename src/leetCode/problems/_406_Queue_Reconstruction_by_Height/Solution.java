@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class Solution {
+	
+	//N*logN
     public int[][] reconstructQueue(int[][] people) {
     	if(people==null||people.length==1)
     		return people;
