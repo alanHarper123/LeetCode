@@ -19,6 +19,5 @@ public class Solution {
 				absences.add(i+1);
 		}
         return absences;
-        
     }
 }
