@@ -1,11 +1,13 @@
 package leetCode.problems._522_Longest_Uncommon_Subsequence_II;
 
+import java.util.Arrays;
 import java.util.HashSet;
 
 public class Solution {
     public int findLUSlength(String[] strs) {
         HashSet<Integer> visitedNodes = new HashSet<>();
         int lusL = -1;
+        Arrays.sort(strs,(s1,s2)->s2.length()-s1.length());
         for (int j = 0; j < strs.length; j++) {
         	if(!visitedNodes.add(j)) {
         		continue;
@@ -30,8 +32,9 @@ public class Solution {
 					}
 				}
 			}
-			if(findE==false)
-				lusL = Math.max(lusLj, lusL);
+			if(findE==false) {
+				return Math.max(lusLj, lusL);
+			}	
 		}
         return lusL;
     }
