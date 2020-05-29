@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
-import leetCode.problems._589_N_ary_Tree_Preorder_Traversal.Node;
 
 //Definition for a Node.
 class Node {
