@@ -1,6 +1,5 @@
 package leetCode.problems._687_Longest_Univalue_Path;
 
-import jdk.javadoc.internal.doclets.toolkit.taglets.ReturnTaglet;
 import leetCode.problems.commonUtil.TreeNode;
 
 public class Solution {
