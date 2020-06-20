@@ -1,7 +1,7 @@
 package leetCode.problems._60_Permutation_Sequence;
 
 import java.util.ArrayList;
-class Solution {
+public class Solution {
 	public String getPermutation(int n, int k) {
 		int[] indexes = new int[n+1];
 		indexes[0]=1;
@@ -46,5 +46,29 @@ class Solution {
 			System.out.println(solution2.permuteUnique(baseList));
 		}
 
+	}
+}
+class Solution002 {
+	public String getPermutation(int n, int k) {
+		int[] indexes = new int[n+1];
+		indexes[0]=1;
+		indexes[1]=1;
+		for (int i = 2; i < indexes.length; i++) {
+			indexes[i]=indexes[i-1]*i;
+		}
+		char[] resultTempList = new char[n];
+		ArrayList<Integer> baseList = new ArrayList<>();
+		for (int i = 0; i < n; i++) {
+			baseList.add(i+1);
+		}
+		for (int i = 0; i < n; i++) {
+			int  index = k/indexes[n-1-i];
+			if( k%indexes[n-1-i]==0&&index!=0) {
+				index--;
+			}
+			k-=index*indexes[n-1-i];
+			resultTempList[i]=(char)('0'+baseList.remove(index));
+		}
+		return new String(resultTempList);
 	}
 }
