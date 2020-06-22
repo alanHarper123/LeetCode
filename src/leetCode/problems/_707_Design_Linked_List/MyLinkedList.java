@@ -24,9 +24,6 @@ public class MyLinkedList {
     
     /** Get the value of the index-th node in the linked list. If the index is invalid, return -1. */
     public int get(int index) {
-    	if(index==30) {
-    		System.out.println("gg");
-    	}
         if(index<0||index>=size)
         	return -1;
         Node runner = headNode;
@@ -40,9 +37,6 @@ public class MyLinkedList {
     
     /** Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list. */
     public void addAtHead(int val) {
-    	if(val==30) {
-    		System.out.println("gg");
-    	}
         headNode = new Node(val, headNode);
         size++;
         if(size==1)
@@ -51,9 +45,6 @@ public class MyLinkedList {
     
     /** Append a node of value val to the last element of the linked list. */
     public void addAtTail(int val) {
-    	if(val==30) {
-    		System.out.println("gg");
-    	}
     	size++;
         Node newTail = new Node(val, null);
         if(tailNode!=null) {
@@ -66,9 +57,6 @@ public class MyLinkedList {
     
     /** Add a node of value val before the index-th node in the linked list. If index equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted. */
     public void addAtIndex(int index, int val) {
-    	if(val==9) {
-    		System.out.println("gg");
-    	}
         if(index==0) {
         	addAtHead(val);
         }else if(index>0&&index<size) {
@@ -90,9 +78,6 @@ public class MyLinkedList {
     
     /** Delete the index-th node in the linked list, if the index is valid. */
     public void deleteAtIndex(int index) {
-    	if(index==30) {
-    		System.out.println("gg");
-    	}
         if(index>=0&&index<size) {
         	size--;
         	if(index==0) {
