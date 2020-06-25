@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Solution {
     public List<Integer> selfDividingNumbers(int left, int right) {
-        ArrayList<Byte> digits = new ArrayList<>();
+        ArrayList<Byte> digits = new ArrayList<>(String.valueOf(right).length());
         int leftTemp = left-1;
         while (leftTemp>0) {
         	digits.add((byte)(leftTemp%10));
