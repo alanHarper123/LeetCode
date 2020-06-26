@@ -11,9 +11,11 @@ public class Solution {
         for (int i=0; i < nums.length; i++) {
 			numsSimplied[numSLen] = nums[i];
 			numSums[numSLen]=nums[i];
+			int temp = i;
 			while (i+1<nums.length&&nums[i+1]==nums[i]) {
-				numSums[numSLen]+=nums[i++];
+				i++;
 			}
+			numSums[numSLen]*=i-temp+1;
 			numSLen++;
 		}
         int i = 0;
