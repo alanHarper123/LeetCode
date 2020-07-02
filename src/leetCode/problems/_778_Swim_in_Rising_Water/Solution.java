@@ -31,6 +31,7 @@ public class Solution {
 				return true;
 			}
 			if(grid[newR][newC]>val) {
+				isVisited[newR][newC]=true;
 				minQueue.add(new int[] {newR,newC,grid[newR][newC]});
 			}else {
 				grid[newR][newC] = val;
