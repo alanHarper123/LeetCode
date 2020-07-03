@@ -1,39 +1,21 @@
 package leetCode.problems._785_Is_Graph_Bipartite;
 
-import java.util.LinkedList;
 
 public class Solution {
 
     public boolean isBipartite(int[][] graph) {
-        LinkedList<Integer>[] allNodes = new LinkedList[graph.length];
-        for (int i = 0; i < graph.length; i++) {
-        	LinkedList<Integer> u = allNodes[i];
-			if(u==null) {
-				u = new LinkedList<>();
-				allNodes[i] = u;
-			}
-			for (int j:graph[i]) {
-				LinkedList<Integer> v = allNodes[j];
-				if(v==null) {
-					v = new LinkedList<>();
-					allNodes[j] = v;
-				}
-				u.add(j);
-				v.add(i);
-			}
-		}
         Boolean[] isVisited = new Boolean[graph.length];
         for (int i = 0; i < isVisited.length; i++) {
 			if(isVisited[i]==null) {
 				isVisited[i] = true;
-				if(!dfs(i, isVisited,allNodes))
+				if(!dfs(i, isVisited,graph))
 					return false;
 			}
 		}
         return true;
     }
-    private boolean dfs(int i, Boolean[] isVisited,LinkedList<Integer>[] allNodes) {
-    	LinkedList<Integer> node = allNodes[i];
+    private boolean dfs(int i, Boolean[] isVisited,int[][] allNodes) {
+    	int[] node = allNodes[i];
     	for (int neighbor:node) {
 			if(isVisited[neighbor]!=null) {
 				if(isVisited[neighbor]==isVisited[i])
