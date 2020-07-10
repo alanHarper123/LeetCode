@@ -45,5 +45,6 @@ public class Solution {
 		String[] words = new String[] {"hello", "hi", "helo"};
 		Solution solution = new Solution();
 		System.out.println(solution.expressiveWords(S, words));
+		System.out.println(0x44>>>3);
 	}
 }
