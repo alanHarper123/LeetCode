@@ -10,7 +10,7 @@ import java.util.Random;
 public class Solution {
 	private HashMap<Integer, Integer> base;
 	private ArrayList<Entry<Integer,Integer>> dCount;
-	private Random random = new Random();
+	private Random random = new Random(System.currentTimeMillis());
     public List<Integer> topKFrequent(int[] nums, int k) {
         base = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
@@ -48,5 +48,21 @@ public class Solution {
 		}else {
 			PartialQuickSort(dCount, start, i, k);
 		}		
+    }
+    public int[] topKFrequent002(int[] nums, int k) {
+        base = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+        	Integer count = base.get(nums[i]);
+        	if(count==null)
+        		count = 0;
+        	base.put(nums[i], count+1);	
+		}
+        dCount = new ArrayList<>(base.entrySet());
+        PartialQuickSort(dCount, 0, dCount.size(), k);
+        int[] result = new int[k];
+        for (int i = 0; i < k; i++) {
+			result[i] = dCount.get(i).getKey();
+		}
+        return result;
     }
 }
