@@ -1,6 +1,5 @@
 package leetCode.problems._944_Delete_Columns_to_Make_Sorted;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
