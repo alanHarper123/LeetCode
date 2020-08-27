@@ -39,45 +39,49 @@ public class Solution {
     }
 }
 /*
-989. Add to Array-Form of Integer
-Easy
+990. Satisfiability of Equality Equations
+Medium
 
-For a non-negative integer X, the array-form of X is an array of its digits in left to right order.  For example, if X = 1231, then the array form is [1,2,3,1].
+Given an array equations of strings that represent relationships between variables, each string equations[i] has length 4 and takes one of two different forms: "a==b" or "a!=b".  Here, a and b are lowercase letters (not necessarily different) that represent one-letter variable names.
 
-Given the array-form A of a non-negative integer X, return the array-form of the integer X+K.
+Return true if and only if it is possible to assign integers to variable names so as to satisfy all the given equations.
 
  
 
 Example 1:
 
-Input: A = [1,2,0,0], K = 34
-Output: [1,2,3,4]
-Explanation: 1200 + 34 = 1234
+Input: ["a==b","b!=a"]
+Output: false
+Explanation: If we assign say, a = 1 and b = 1, then the first equation is satisfied, but not the second.  There is no way to assign the variables to satisfy both equations.
 
 Example 2:
 
-Input: A = [2,7,4], K = 181
-Output: [4,5,5]
-Explanation: 274 + 181 = 455
+Input: ["b==a","a==b"]
+Output: true
+Explanation: We could assign a = 1 and b = 1 to satisfy both equations.
 
 Example 3:
 
-Input: A = [2,1,5], K = 806
-Output: [1,0,2,1]
-Explanation: 215 + 806 = 1021
+Input: ["a==b","b==c","a==c"]
+Output: true
 
 Example 4:
 
-Input: A = [9,9,9,9,9,9,9,9,9,9], K = 1
-Output: [1,0,0,0,0,0,0,0,0,0,0]
-Explanation: 9999999999 + 1 = 10000000000
+Input: ["a==b","b!=c","c==a"]
+Output: false
+
+Example 5:
+
+Input: ["c==c","b==d","x!=z"]
+Output: true
 
  
 
-Note：
+Note:
 
-    1 <= A.length <= 10000
-    0 <= A[i] <= 9
-    0 <= K <= 10000
-    If A.length > 1, then A[0] != 0
+    1 <= equations.length <= 500
+    equations[i].length == 4
+    equations[i][0] and equations[i][3] are lowercase letters
+    equations[i][1] is either '=' or '!'
+    equations[i][2] is '='
  */
