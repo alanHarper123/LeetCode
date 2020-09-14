@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 
 public class Solution {
-    public int[] gardenNoAdj(int N, int[][] paths) {
+    public int[] gardenNoAdj001(int N, int[][] paths) {
         int[] res = new int[N];
         boolean[] isPending = new boolean[N+1];
         int[][] neigbors = new int[N+1][5];
@@ -53,6 +53,45 @@ public class Solution {
 			}
 		}
         return res;
+    }
+    public int[] gardenNoAdj(int N, int[][] paths) {
+        int[] res = new int[N];
+        int[][] neigbors = new int[N+1][5];
+        for (int i = 1; i < neigbors.length; i++) {
+			neigbors[i][0] = i;
+			neigbors[i][4] = 1;
+		}
+        for(int[] path:paths) {
+        	int[] u = neigbors[path[0]];
+        	int[] v = neigbors[path[1]];
+        	u[u[4]++] = path[1];
+        	v[v[4]++] = path[0];
+        }
+        for (int i = 0; i < N; i++) {
+			if(res[i]==0) {
+				dfs(res, neigbors, i+1);
+			}
+		}
+        return res;
+    }
+    private void dfs(int[] res,int[][] neigbors,int ni) {
+    	int[] v = neigbors[ni];
+		boolean[] judges = new boolean[5];
+		for (int j = 1; j < v[4]; j++) {
+			if(res[v[j]-1]!=0) {
+				judges[res[v[j]-1]] = true;
+			}
+		}
+		int k=1;
+		while (judges[k]) {
+			k++;
+		}
+		res[v[0]-1] = k;
+    	for (int j = 1; j < v[4]; j++) {
+			if(res[v[j]-1]==0) {
+				dfs(res, neigbors, v[j]);
+			}
+		}
     }
     public static void main(String[] args) {
 		System.out.println(Arrays.toString(new Solution().gardenNoAdj(5, new int[][] {{3,4},{4,5},{3,2},{5,1},{1,3},{4,2}})));
