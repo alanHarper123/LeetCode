@@ -3,10 +3,6 @@ package leetCode.problems._1186_Maximum_Subarray_Sum_with_One_Deletion;
 public class Solution {
 	public int maximumSum(int[] arr) {
 		int maxSum = Integer.MIN_VALUE;
-		for(int e:arr) {
-			if(e>maxSum)
-				maxSum = e;
-		}
 		int[] leftSum = new int[arr.length+1];
 		for (int i = 0; i < arr.length; i++) {
 			leftSum[i+1] = arr[i]+leftSum[i];
