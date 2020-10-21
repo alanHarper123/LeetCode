@@ -13,6 +13,55 @@ public class Solution {
         	a = c;
         	c = temp;
         }
+        long start = a, end =  n*a;
+        long a_c = (long)a*c/gcd(a, c);
+        long a_b = (long)a*b/gcd(a, b);
+        long b_c = (long)b*c/gcd(b, c);
+        long a_b_c = (long)c*(a_b/gcd(c,a_b));
+        while (end>=start) {
+			long mid = start+(end-start)/2;
+			long countA = mid/a;
+			long countB  = mid/b;
+			long countC = mid/c;
+			long sum = countA+countB+countC;
+			sum-=mid/a_c;
+			sum-=mid/a_b;
+			sum-=mid/b_c;
+			sum+=mid/a_b_c;
+			if(n>sum)
+				start = mid+1;
+			else if(n<sum)
+				end = mid;
+			else 
+				return (int) Math.max(countA*a, Math.max(countB*b, countC*c));
+				
+		}
+        return 0;
+    }
+    private long gcd(long a, long b) {
+    	if(a<b)
+    		return gcd(b, a);
+    	long r = a%b;
+    	if(r==0)
+    		return b;
+    	return gcd(r, b);
+    }
+    public static void main(String[] args) {
+    	System.out.println(System.currentTimeMillis());
+		System.out.println(new Solution().nthUglyNumber(1000000000, 2, 217983653, 336916467));
+		System.out.println(System.currentTimeMillis());
+	}
+    public int nthUglyNumber001(int n, int a, int b, int c) {
+        if(a>b) {
+        	int temp = a;
+        	a = b;
+        	b = temp;
+        }
+        if(a>c) {
+        	int temp = a;
+        	a = c;
+        	c = temp;
+        }
         if(b>c) {
         	int temp = b;
         	b = c;
@@ -55,11 +104,7 @@ public class Solution {
 		}
         return 0;
     }
-    public static void main(String[] args) {
-    	System.out.println(System.currentTimeMillis());
-		System.out.println(new Solution().nthUglyNumber(1000000000, 2, 217983653, 336916467));
-		System.out.println(System.currentTimeMillis());
-	}
+
     private int getCommonCombine(int a, int b) {
         ArrayList<Integer> primesAD = new ArrayList<>();
         getPrimes(a, primesAD);
