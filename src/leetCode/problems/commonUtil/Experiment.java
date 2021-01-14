@@ -7,7 +7,7 @@ import java.io.FileReader;
 public class Experiment {
 	public static void main(String[] args) {
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(new File("F:\\virtualbox\\sharefolder\\computer systems\\code\\labs\\bomb\\phase5.txt")));
+			BufferedReader br = new BufferedReader(new FileReader(new File("F:\\virtualbox\\sharefolder\\computer systems\\code\\labs\\bomb\\phaseSecret.txt")));
 			StringBuilder stringBuilder = new StringBuilder();
 			String line = br.readLine();
 			while (line!=null) {
